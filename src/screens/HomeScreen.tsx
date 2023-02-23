@@ -1,20 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { Text, SafeAreaView, View, Image, StyleSheet } from 'react-native';
 import { styled } from 'nativewind';
 
-const StyledText = styled(Text, 'text-2xl text-red-600 dark:text-white');
-const StyledView = styled(
-  View,
-  'flex-1 bg-white dark:bg-black items-center justify-center'
-);
+import { useNavigation } from '@react-navigation/native';
+import { Props } from '../types';
 
-const HomeScreen = () => {
+const StyledText = styled(Text, 'text-2xl text-red-600 dark:text-white');
+const StyledSafeAreaView = styled(SafeAreaView);
+
+const HomeScreen = ({ route, navigation }: Props) => {
+  //const navigation = useNavigation();
+
   return (
-    <StyledView>
-      <StyledText>This is TypeScript!</StyledText>
-      <StatusBar style='auto' />
-    </StyledView>
+    <StyledSafeAreaView>
+      <StyledText>
+        <View>
+          <Image
+            style={styles.tinyLogo}
+            source={{
+              uri: 'https://links.papareact.com/wru',
+            }}
+          />
+        </View>
+      </StyledText>
+    </StyledSafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  tinyLogo: {
+    width: 28,
+    height: 28,
+    borderRadius: 9999,
+    backgroundColor: 'grey',
+  },
+});
 
 export default HomeScreen;
