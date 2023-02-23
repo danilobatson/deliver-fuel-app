@@ -16,7 +16,7 @@ const Search = () => {
             size={20}
           />
           <TextInput
-            placeholder='Restaurants and cuisines'
+            placeholder="What's the craving?"
             keyboardType='default'
           />
         </View>
