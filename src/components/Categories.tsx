@@ -1,35 +1,25 @@
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import React from 'react';
 import CategoryCard from './CategoryCard';
 
 const Categories = () => {
+  const img = 'https://links.papareact.com/gn7';
 
-    const img =
-      'https://links.papareact.com/gn7';
-  
-    const categoryCardProps = {
-        imgUrl: img,
-        title: 'Testing'
-    };
-    
-    return (
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.container}
-      >
-        <CategoryCard {...categoryCardProps} />
-        <CategoryCard {...categoryCardProps} />
-        <CategoryCard {...categoryCardProps} />
-        <CategoryCard {...categoryCardProps} />
-        <CategoryCard {...categoryCardProps} />
-        <CategoryCard {...categoryCardProps} />
-        <CategoryCard {...categoryCardProps} />
-        <CategoryCard {...categoryCardProps} />
-        <CategoryCard {...categoryCardProps} />
- 
-      </ScrollView>
-    );
+  const categoryCardProps = {
+    imgUrl: img,
+    title: 'Testing',
+  };
+
+  const data = new Array(10).fill(1);
+
+  return (
+    <FlatList
+      style={styles.container}
+      data={data}
+      renderItem={() => <CategoryCard {...categoryCardProps} />}
+      horizontal
+    />
+  );
 };
 
 export default Categories;

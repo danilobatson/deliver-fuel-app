@@ -1,4 +1,8 @@
-import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  FlatList,
+} from 'react-native';
 
 import { Search, Categories } from '../components';
 import { Props } from '../types';
@@ -8,12 +12,20 @@ const HomeScreen = ({ route, navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      {/* Search Bar */}
       <Search />
-      <ScrollView style={styles.scroll}>
-        {/* Categories */}
-        <Categories />
-        {/* Featured Rows */}
-      </ScrollView>
+      {/* Body */}
+      <FlatList
+        style={styles.flatList}
+        data={[1]}
+        renderItem={() => (
+          <>
+            {/* Categories */}
+            <Categories />
+            {/* Featured Rows */}
+          </>
+        )}
+      />
     </SafeAreaView>
   );
 };
@@ -23,7 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingTop: 10,
   },
-  scroll: {
+  flatList: {
     backgroundColor: '#d2d1d5',
     paddingBottom: 20,
   },
