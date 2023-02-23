@@ -1,4 +1,4 @@
 import { RootStackParamList, Props } from './navigation';
+import { categoryCardProps } from './components';
 
-
-export { RootStackParamList, Props };
+export { RootStackParamList, Props, categoryCardProps };
