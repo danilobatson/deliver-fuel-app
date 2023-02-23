@@ -5,11 +5,15 @@ import { HomeScreen } from './src/screens';
 import { RootStackParamList } from './src/types';
 
 import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { HeaderRight, HeaderLeft } from './src/components';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const homeScreenOptions: NativeStackNavigationOptions = {
-  headerShown: false,
+  headerShown: true,
+  headerTitle: '',
+  headerLeft: () => <HeaderLeft />,
+  headerRight: () => <HeaderRight />,
 };
 
 export default function App() {

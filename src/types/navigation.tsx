@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // Must be type alias, not interface. Doing so will result in incorrect type checking where it allows you to pass incorrect route names.
