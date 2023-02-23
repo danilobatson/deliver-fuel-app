@@ -1,20 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { styled } from 'nativewind';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeScreen } from './src/screens';
 
-const StyledText = styled(Text, 'text-2xl text-black dark:text-white');
-const StyledView = styled(
-  View,
-  'flex-1 bg-white dark:bg-black items-center justify-center'
-);
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <StyledView>
-      <StyledText>This is TypeScript!</StyledText>
-      <StatusBar style='auto' />
-    </StyledView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Home' component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-
