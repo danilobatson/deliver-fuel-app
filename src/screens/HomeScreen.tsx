@@ -1,11 +1,23 @@
 import { SafeAreaView, StyleSheet, FlatList } from 'react-native';
-
+import axios from 'axios';
 import { Search, Categories, FeaturedRow } from '../components';
 import { Props } from '../types';
+import { useEffect } from 'react';
 
 const HomeScreen = ({ route, navigation }: Props) => {
   //const navigation = useNavigation();
 
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/api')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+  
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* Search Bar */}
