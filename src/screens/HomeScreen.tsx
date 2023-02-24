@@ -1,10 +1,6 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  FlatList,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, FlatList } from 'react-native';
 
-import { Search, Categories } from '../components';
+import { Search, Categories, FeaturedRow } from '../components';
 import { Props } from '../types';
 
 const HomeScreen = ({ route, navigation }: Props) => {
@@ -22,7 +18,27 @@ const HomeScreen = ({ route, navigation }: Props) => {
           <>
             {/* Categories */}
             <Categories />
+
             {/* Featured Rows */}
+            <FeaturedRow
+              id='123'
+              title='Featured'
+              description='Paid placements'
+              featuredCategory='featured category'
+            />
+
+            <FeaturedRow
+              id='1234'
+              title='Tasty Discounts'
+              description='Everyone has been enjoying these'
+              featuredCategory='discounts'
+            />
+            <FeaturedRow
+              id='1235'
+              title='Offer Near You'
+              description='Why not support your local business'
+              featuredCategory='offers'
+            />
           </>
         )}
       />
@@ -36,7 +52,6 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   flatList: {
-    backgroundColor: '#d2d1d5',
     paddingBottom: 20,
   },
 });

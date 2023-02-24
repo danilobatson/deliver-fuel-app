@@ -3,12 +3,8 @@ import React from 'react';
 import CategoryCard from './CategoryCard';
 
 const Categories = () => {
-  const img = 'https://links.papareact.com/gn7';
-
-  const categoryCardProps = {
-    imgUrl: img,
-    title: 'Testing',
-  };
+  const img =
+    'https://images.squarespace-cdn.com/content/v1/59c46119f9a61e33274471cd/1506446247654-N8VE2V7V3VPNH6LO39K8/Arc+Burger+with+Cocktail.jpg?format=2500w';
 
   const data = new Array(10).fill(1);
 
@@ -16,7 +12,7 @@ const Categories = () => {
     <FlatList
       style={styles.container}
       data={data}
-      renderItem={() => <CategoryCard {...categoryCardProps} />}
+      renderItem={() => <CategoryCard imgUrl={img} title='Category' />}
       horizontal
     />
   );
