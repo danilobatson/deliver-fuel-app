@@ -8,21 +8,8 @@ import RestaurantCard from './RestaurantCard';
 const FeaturedRow = ({
   title,
   description,
-  featuredCategory,
+  data,
 }: featuredRowProps) => {
-  const restaurantCardProps = {
-    id: 1,
-    imgUrl:
-      'https://images.squarespace-cdn.com/content/v1/59c46119f9a61e33274471cd/1506446138647-9ERHWFT1LCNJ6K80ICQB/IMG_4518.JPG?format=2500w',
-    title: 'Arc',
-    rating: 4.5,
-    genre: 'American Fusion',
-    address: '123 Main St, Costa Mesa, CA',
-    short_description: 'Short description',
-    dishes: ['duck taco', 'cornbread', 'meatball pizza'],
-    long: 123,
-    lat: 123,
-  };
   return (
     <View>
       <View style={styles.container}>
@@ -35,14 +22,17 @@ const FeaturedRow = ({
         style={styles.flatList}
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={[1]}
-        renderItem={() => (
-          // Restaurant cards
+        data={data}
+        //May come back undefined
+        renderItem={({ item }: any) => (
           <>
-            <RestaurantCard {...restaurantCardProps} />
-            <RestaurantCard {...restaurantCardProps} />
-            <RestaurantCard {...restaurantCardProps} />
-            <RestaurantCard {...restaurantCardProps} />
+            <RestaurantCard
+              name={item.name}
+              image_url={item.image_url}
+              rating={item.rating}
+              price={item.price}
+              location={item.location}
+            />
           </>
         )}
       />

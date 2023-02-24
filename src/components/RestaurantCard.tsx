@@ -3,35 +3,30 @@ import React from 'react';
 
 import { restaurantCardProps } from '../types';
 import { StarIcon } from 'react-native-heroicons/solid';
-import { MapIcon, MapPinIcon } from 'react-native-heroicons/outline';
+import { MapPinIcon } from 'react-native-heroicons/outline';
+
+import CardDetails from './CardDetails';
 
 const RestaurantCard = ({
-  id,
-  imgUrl,
-  title,
+  name,
+  image_url,
   rating,
-  genre,
-  address,
-  short_description,
-  dishes,
-  long,
-  lat,
+  price,
+  location,
 }: restaurantCardProps) => {
+  const { address1, city, state, zip_code } = location;
   return (
     <TouchableOpacity style={styles.touchable}>
-      <Image style={styles.image} source={{ uri: imgUrl }} />
+      <Image style={styles.image} source={{ uri: image_url }} />
       <View style={styles.descriptionContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.iconContainer}>
-          <StarIcon color='green' opacity={0.5} size={22} />
-          <Text>
-            <Text style={styles.rating}>{rating}</Text> • {genre}
-          </Text>
-        </View>
+        <Text style={styles.title}>{name}</Text>
+        <CardDetails rating={rating} price={price} />
 
         <View style={styles.locale}>
           <MapPinIcon color='gray' opacity={0.4} size={22} />
-          <Text style={styles.address}>Nearby • {address} </Text>
+          <Text style={styles.address}>
+            Nearby • {address1}, {city}, {state} {zip_code}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -42,7 +37,7 @@ export default RestaurantCard;
 
 const styles = StyleSheet.create({
   image: {
-    width: 256,
+    width: 320,
     height: 144,
     borderRadius: 10,
   },
@@ -55,15 +50,6 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     paddingBottom: 5,
     paddingHorizontal: 5,
-  },
-  iconContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 5,
-  },
-  rating: {
-    color: 'green',
   },
   address: {
     marginLeft: 5,
@@ -79,6 +65,6 @@ const styles = StyleSheet.create({
   touchable: {
     marginRight: 10,
     backgroundColor: 'white',
-    boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)', 
+    boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)',
   },
 });

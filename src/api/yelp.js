@@ -9,13 +9,11 @@ const client = yelp.client(apiKey);
 
 app.use(cors());
 
-app.get('/api', (req, res) => {
+app.get('/fuel', (req, res) => {
   client
     .search({
-      location: 'Orange County, CA',
+      location: req.query.city,
       term: 'restaurants',
-      // offset: '0',
-      // limit: '50'
     })
     .then((response) => {
       console.log(JSON.stringify(response.jsonBody));

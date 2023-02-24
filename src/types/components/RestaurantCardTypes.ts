@@ -1,14 +1,14 @@
 interface restaurantCardProps {
-  id: number;
-  imgUrl: string;
-  title: string;
+  name: string;
+  image_url: string;
   rating: number;
-  genre: string;
-  address: string;
-  short_description: string;
-  dishes: string[];
-  long: number;
-  lat: number;
+  price: string;
+  location: {
+    address1: string;
+    city: string;
+    state: string;
+    zip_code: string;
+  };
 }
 
 export { restaurantCardProps };

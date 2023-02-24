@@ -2,22 +2,59 @@ import { SafeAreaView, StyleSheet, FlatList } from 'react-native';
 import axios from 'axios';
 import { Search, Categories, FeaturedRow } from '../components';
 import { Props } from '../types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const HomeScreen = ({ route, navigation }: Props) => {
   //const navigation = useNavigation();
+  const [laData, setLAData] = useState([]);
+  const [sdData, setSDData] = useState([]);
+  const [ocData, setOCData] = useState([]);
 
-  useEffect(() => {
+  const getOCData = () => {
     axios
-      .get('http://localhost:3001/api')
+      .get('http://localhost:3001/fuel', {
+        params: { city: 'Orange County, CA' },
+      })
       .then((response) => {
-        console.log(response.data);
+        setOCData(response.data);
       })
       .catch((e) => {
         console.log(e);
       });
+  };
+  const getLAData = () => {
+    axios
+      .get('http://localhost:3001/fuel', {
+        params: { city: 'Los Angeles, CA' },
+      })
+      .then((response) => {
+        setLAData(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  const getSDData = () => {
+    axios
+      .get('http://localhost:3001/fuel', { params: { city: 'San Diego, CA' } })
+      .then((response) => {
+        setSDData(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  const getData = () => {
+    getOCData();
+    getLAData();
+    getSDData();
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
-  
+
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* Search Bar */}
@@ -32,24 +69,28 @@ const HomeScreen = ({ route, navigation }: Props) => {
             <Categories />
 
             {/* Featured Rows */}
+
             <FeaturedRow
               id='123'
-              title='Featured'
-              description='Paid placements'
-              featuredCategory='featured category'
+              title='Orange County'
+              description='Better than the OC Fair!'
+              featuredCategory='Orange County Restaurants'
+              data={ocData}
             />
 
             <FeaturedRow
               id='1234'
-              title='Tasty Discounts'
-              description='Everyone has been enjoying these'
-              featuredCategory='discounts'
+              title='Los Angeles'
+              description='Too much traffic? Let us come to you'
+              featuredCategory='Los Angeles Restaurants'
+              data={laData}
             />
             <FeaturedRow
               id='1235'
-              title='Offer Near You'
-              description='Why not support your local business'
-              featuredCategory='offers'
+              title='San Diego'
+              description='Those waves sure work up an appetite'
+              featuredCategory='San Diego Restaurants'
+              data={sdData}
             />
           </>
         )}

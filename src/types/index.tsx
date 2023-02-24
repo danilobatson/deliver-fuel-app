@@ -1,4 +1,16 @@
 import { RootStackParamList, Props } from './navigation';
-import { categoryCardProps, featuredRowProps, restaurantCardProps } from './components';
+import {
+  categoryCardProps,
+  featuredRowProps,
+  restaurantCardProps,
+  cardDetailsProps,
+} from './components';
 
-export { RootStackParamList, Props, categoryCardProps, featuredRowProps, restaurantCardProps };
+export {
+  RootStackParamList,
+  Props,
+  categoryCardProps,
+  featuredRowProps,
+  restaurantCardProps,
+  cardDetailsProps,
+};

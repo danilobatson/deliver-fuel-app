@@ -5,5 +5,15 @@ import Categories from './Categories';
 import CategoryCard from './CategoryCard';
 import FeaturedRow from './FeaturedRow';
 import RestaurantCard from './RestaurantCard';
+import CardDetails from './CardDetails';
 
-export { HeaderLeft, HeaderRight, Search, Categories, CategoryCard, FeaturedRow, RestaurantCard };
+export {
+  HeaderLeft,
+  HeaderRight,
+  Search,
+  Categories,
+  CategoryCard,
+  FeaturedRow,
+  RestaurantCard,
+  CardDetails,
+};
