@@ -16,7 +16,6 @@ app.get('/fuel', (req, res) => {
       term: 'restaurants',
     })
     .then((response) => {
-      console.log(JSON.stringify(response.jsonBody));
       res.send(response.jsonBody.businesses);
     })
     .catch((e) => {
