@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { restaurantCardProps } from '../types';
-import CardDetails from './CardDetails';
+import { restaurantCardProps } from '@/types';
+import {CardDetails} from '@/components';
 
 const RestaurantCard = ({
   name,
@@ -13,12 +13,11 @@ const RestaurantCard = ({
   return (
     <TouchableOpacity style={styles.touchable}>
       <Image style={styles.image} source={{ uri: image_url }} />
-      
+
       <View style={styles.descriptionContainer}>
         <Text style={styles.title}>{name}</Text>
-        <CardDetails rating={rating} price={price} location={location}  />
+        <CardDetails rating={rating} price={price} location={location} />
       </View>
-      
     </TouchableOpacity>
   );
 };

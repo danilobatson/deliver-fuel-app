@@ -3,12 +3,12 @@ import React from 'react';
 import { StarIcon } from 'react-native-heroicons/solid';
 import { MapPinIcon } from 'react-native-heroicons/outline';
 
-import { cardDetailsProps } from '../types';
+import { cardDetailsProps } from '@/types';
 
 const CardDetails = ({ rating, price, location }: cardDetailsProps) => {
-    const { address1, city, state, zip_code } = location;
+  const { address1, city, state, zip_code } = location;
 
-    return (
+  return (
     <>
       <View style={styles.iconContainer}>
         <StarIcon color='green' opacity={0.5} size={22} />

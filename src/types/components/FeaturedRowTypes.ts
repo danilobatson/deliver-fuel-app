@@ -3,7 +3,7 @@ interface featuredRowProps {
   title: string;
   description: string;
   featuredCategory: string;
-  data: {}[];
+  data: object[];
 }
 
 export { featuredRowProps };

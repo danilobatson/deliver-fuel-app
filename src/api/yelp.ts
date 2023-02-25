@@ -1,7 +1,14 @@
-const express = require('express');
-const app = express();
+import express, {
+  Express,
+  Request,
+  Response,
+  ErrorRequestHandler,
+} from 'express';
+
+const app: Express = express();
 const port = 3001;
 const cors = require('cors');
+
 const yelp = require('yelp-fusion');
 const apiKey =
   '3hmawgfsAI-a4bmGS_7Krd9v-5pWZo2lazdGkjtlzU_OdmeqSblfgBskUQwI8oH0m0i_rivkQ6Fo91hJQcHCzYqfjGVQvywYuu3l3VxxaoltUcUrKN4norls-61TYXYx';
@@ -9,16 +16,17 @@ const client = yelp.client(apiKey);
 
 app.use(cors());
 
-app.get('/fuel', (req, res) => {
+app.get('/fuel', (req: Request, res: Response) => {
   client
     .search({
       location: req.query.city,
       term: 'restaurants',
     })
-    .then((response) => {
+    //@ts-ignore 
+    .then((response: any) => {
       res.send(response.jsonBody.businesses);
     })
-    .catch((e) => {
+    .catch((e: ErrorRequestHandler) => {
       console.log(e);
     });
 });

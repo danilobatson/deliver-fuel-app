@@ -1,15 +1,11 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-import { featuredRowProps } from '../types';
+import { featuredRowProps } from '@/types';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
-import RestaurantCard from './RestaurantCard';
+import { RestaurantCard } from '@/components';
 
-const FeaturedRow = ({
-  title,
-  description,
-  data,
-}: featuredRowProps) => {
+const FeaturedRow = ({ title, description, data }: featuredRowProps) => {
   return (
     <View>
       <View style={styles.container}>
@@ -24,6 +20,7 @@ const FeaturedRow = ({
         showsHorizontalScrollIndicator={false}
         data={data}
         //May come back undefined
+        // @ts-ignore
         renderItem={({ item }: any) => (
           <>
             <RestaurantCard

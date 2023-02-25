@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet, FlatList } from 'react-native';
-import axios from 'axios';
-import { Search, Categories, FeaturedRow } from '../components';
-import { Props } from '../types';
+import axios, { AxiosResponse, AxiosError } from 'axios';
+import { Search, Categories, FeaturedRow } from '@/components/';
+import { Props } from '@/types';
 import { useEffect, useState } from 'react';
 
 const HomeScreen = ({ route, navigation }: Props) => {
@@ -10,45 +10,37 @@ const HomeScreen = ({ route, navigation }: Props) => {
   const [sdData, setSDData] = useState([]);
   const [ocData, setOCData] = useState([]);
 
-  const getOCData = () => {
-    axios
-      .get('http://localhost:3001/fuel', {
-        params: { city: 'Orange County, CA' },
+  const getCityData = async (city: string) => {
+    await axios
+      .get('http://localhost:3001/fuel', { params: { city } })
+      .then((response: AxiosResponse) => {
+        caseCity(city, response);
       })
-      .then((response) => {
-        setOCData(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-  const getLAData = () => {
-    axios
-      .get('http://localhost:3001/fuel', {
-        params: { city: 'Los Angeles, CA' },
-      })
-      .then((response) => {
-        setLAData(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-  const getSDData = () => {
-    axios
-      .get('http://localhost:3001/fuel', { params: { city: 'San Diego, CA' } })
-      .then((response) => {
-        setSDData(response.data);
-      })
-      .catch((e) => {
+      .catch((e: AxiosError) => {
         console.log(e);
       });
   };
 
-  const getData = () => {
-    getOCData();
-    getLAData();
-    getSDData();
+  const caseCity = (city: string, response: AxiosResponse) => {
+    switch (city) {
+      case 'San Diego, CA':
+        setSDData(response.data);
+        break;
+      case 'Los Angeles, CA':
+        setLAData(response.data);
+        break;
+      case 'Orange County, CA':
+        setOCData(response.data);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const getData = async () => {
+    await getCityData('San Diego, CA');
+    await getCityData('Los Angeles, CA');
+    await getCityData('Orange County, CA');
   };
 
   useEffect(() => {

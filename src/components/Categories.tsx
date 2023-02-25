@@ -1,6 +1,6 @@
 import { StyleSheet, FlatList } from 'react-native';
 import React from 'react';
-import CategoryCard from './CategoryCard';
+import { CategoryCard } from '@/components';
 
 const Categories = () => {
   const img =
