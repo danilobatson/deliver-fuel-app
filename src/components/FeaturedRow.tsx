@@ -29,6 +29,7 @@ const FeaturedRow = ({ title, description, data }: featuredRowProps) => {
               rating={item.rating}
               price={item.price}
               location={item.location}
+              data={item}
             />
           </>
         )}

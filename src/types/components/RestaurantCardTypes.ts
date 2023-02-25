@@ -9,6 +9,7 @@ interface restaurantCardProps {
     state: string;
     zip_code: string;
   };
+  data: any;
 }
 
 export { restaurantCardProps };

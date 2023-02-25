@@ -1,17 +1,16 @@
 import { SafeAreaView, StyleSheet, FlatList } from 'react-native';
-import { Search, Categories, FeaturedRow } from '../components/';
-import { Props } from '@/types';
+import { Search, Categories, FeaturedRow } from '../components';
+import { RestaurantScreenProps } from '@/types';
 import useSetData from '../hooks/useSetData';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function HomeScreen({ route, navigation }: Props) {
+
+function RestaurantScreen({ route, navigation }: RestaurantScreenProps) {
   //const navigation = useNavigation();
 
   const { data } = useSetData();
 
-  const { laData, sdData, ocData }: any  = data;
-  
+  const { laData, sdData, ocData }: any = data;
+
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* Search Bar */}
@@ -66,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default RestaurantScreen;

@@ -1,7 +1,8 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { restaurantCardProps } from '@/types';
-import {CardDetails} from './';
+import { restaurantCardProps, RestaurantScreenNavigation } from '@/types';
+import { CardDetails } from './';
+import { useNavigation } from '@react-navigation/native';
 
 const RestaurantCard = ({
   name,
@@ -9,9 +10,24 @@ const RestaurantCard = ({
   rating,
   price,
   location,
+  data,
 }: restaurantCardProps) => {
+  const navigation = useNavigation<RestaurantScreenNavigation>();
+
   return (
-    <TouchableOpacity style={styles.touchable}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('Restaurant', {
+          name,
+          image_url,
+          rating,
+          price,
+          location,
+          data,
+        })
+      }
+      style={styles.touchable}
+    >
       <Image style={styles.image} source={{ uri: image_url }} />
 
       <View style={styles.descriptionContainer}>
