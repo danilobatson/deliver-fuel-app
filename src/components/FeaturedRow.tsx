@@ -3,7 +3,7 @@ import React from 'react';
 
 import { featuredRowProps } from '@/types';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
-import { RestaurantCard } from '@/components';
+import { RestaurantCard } from './';
 
 const FeaturedRow = ({ title, description, data }: featuredRowProps) => {
   return (

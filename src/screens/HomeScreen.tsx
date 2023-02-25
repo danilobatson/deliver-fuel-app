@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet, FlatList } from 'react-native';
 import axios, { AxiosResponse, AxiosError } from 'axios';
-import { Search, Categories, FeaturedRow } from '@/components/';
+import { Search, Categories, FeaturedRow } from '../components/';
 import { Props } from '@/types';
 import { useEffect, useState } from 'react';
 

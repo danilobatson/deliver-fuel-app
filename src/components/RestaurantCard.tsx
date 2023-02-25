@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { restaurantCardProps } from '@/types';
-import {CardDetails} from '@/components';
+import {CardDetails} from './';
 
 const RestaurantCard = ({
   name,
