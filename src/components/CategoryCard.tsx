@@ -1,15 +1,15 @@
-import {  Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import React from 'react';
 
 import { categoryCardProps } from '@/types';
 
-const CategoryCard = ({ imgUrl, title }: categoryCardProps) => {
+const CategoryCard = ({ title, image }: categoryCardProps) => {
   return (
     <TouchableOpacity style={styles.touch}>
       <Image
         style={styles.img}
         source={{
-          uri: imgUrl,
+          uri: image,
         }}
       />
       <Text style={styles.title}>{title}</Text>

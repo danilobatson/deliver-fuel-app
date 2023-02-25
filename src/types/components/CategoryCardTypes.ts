@@ -1,6 +1,6 @@
 interface categoryCardProps {
-    imgUrl: string;
-    title: string;
+  title: string;
+  image: string;
 }
 
 export { categoryCardProps };
