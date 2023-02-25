@@ -8,7 +8,7 @@ module.exports = {
     '@typescript-eslint/prefer-for-of': 'warn',
     '@typescript-eslint/prefer-as-const': 'error',
     '@typescript-eslint/no-useless-empty-export': 'warn',
-    
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   root: true,
 };

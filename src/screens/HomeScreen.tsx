@@ -1,52 +1,15 @@
 import { SafeAreaView, StyleSheet, FlatList } from 'react-native';
-import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Search, Categories, FeaturedRow } from '../components/';
 import { Props } from '@/types';
-import { useEffect, useState } from 'react';
+import useSetData from '../hooks/useSetData';
 
-const HomeScreen = ({ route, navigation }: Props) => {
+function HomeScreen({ route, navigation }: Props) {
   //const navigation = useNavigation();
-  const [laData, setLAData] = useState([]);
-  const [sdData, setSDData] = useState([]);
-  const [ocData, setOCData] = useState([]);
 
-  const getCityData = async (city: string) => {
-    await axios
-      .get('http://localhost:3001/fuel', { params: { city } })
-      .then((response: AxiosResponse) => {
-        caseCity(city, response);
-      })
-      .catch((e: AxiosError) => {
-        console.log(e);
-      });
-  };
+  const { data } = useSetData();
 
-  const caseCity = (city: string, response: AxiosResponse) => {
-    switch (city) {
-      case 'San Diego, CA':
-        setSDData(response.data);
-        break;
-      case 'Los Angeles, CA':
-        setLAData(response.data);
-        break;
-      case 'Orange County, CA':
-        setOCData(response.data);
-        break;
-      default:
-        break;
-    }
-  };
-
-  const getData = async () => {
-    await getCityData('San Diego, CA');
-    await getCityData('Los Angeles, CA');
-    await getCityData('Orange County, CA');
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+  const { laData, sdData, ocData }: any  = data;
+  
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* Search Bar */}
@@ -89,7 +52,7 @@ const HomeScreen = ({ route, navigation }: Props) => {
       />
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   safeArea: {
