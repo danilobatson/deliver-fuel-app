@@ -6,4 +6,4 @@ App shows results for restaurants in three major areas of Southern California.
 
 Areas include Orange County, Los Angeles, and San Diego. 
 
-Results are generated using the Yelp Fusion API 
+Results are generated using the open Yelp Fusion API using free API key with data limits. 
