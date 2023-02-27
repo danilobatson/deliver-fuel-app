@@ -1,7 +1,9 @@
 # Deliver Fuel
 
-Regional Southern California food delivery app built on React Native and Expo with TypeScript
+Food delivery app built on React Native and Expo with TypeScript.
 
-Regional areas include Orange County, Los Angeles, and San Diego. 
+App shows results for restaurants in three major areas of Southern California. 
+
+Areas include Orange County, Los Angeles, and San Diego. 
 
 Results are generated using the Yelp Fusion API 
